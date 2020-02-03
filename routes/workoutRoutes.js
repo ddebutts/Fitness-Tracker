@@ -2,7 +2,7 @@ const router = require('express').Router()
 const workoutController = require('../controllers/workoutController')
 
 router.route('/')
-    .get(workoutController.getLastWorkout)
+    .get(workoutController.getAllWorkouts)
     .post(workoutController.createWorkout)
 
 router.put('/:id', workoutController.addExercise)

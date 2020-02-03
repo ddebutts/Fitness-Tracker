@@ -4,13 +4,17 @@ const PORT = 8000;
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use(express.static('public'))
+app.use(express.static('public')) // => '/' route
 
 app.use(require('./routes'))
 
 const mongoose = require('mongoose')
-const URI = "mongodb://localhost/workouts_db"
-mongoose.connect(URI)
+const URI = "mongodb://localhost/workout"
+mongoose.connect(URI, {
+    useNewUrlParser: true,
+    useFindAndModify: true,
+    useUnifiedTopology: true
+})
 
 app.listen(PORT, function(){
     console.log("Listening on PORT: ", PORT)
