@@ -9,7 +9,7 @@ app.use(express.static('public')) // => '/' route
 app.use(require('./routes'))
 
 const mongoose = require('mongoose')
-const URI = "mongodb://localhost/workout"
+const URI = process.env.MONGODB_URI || "mongodb://localhost/workout"
 mongoose.connect(URI, {
     useNewUrlParser: true,
     useFindAndModify: true,
